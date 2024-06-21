@@ -9,7 +9,7 @@ def check(host, guessed_mtu, do_print=True):
         if platform.system() == "Windows":
             response = check_call(["ping", host, "-n", "1", "-w", "4", "-l", str(guessed_mtu)], stderr=-1, stdout=-1)
         else:
-            response = check_call(["ping", host, "-c 1", "-w 2", "-s " + str(guessed_mtu)], stderr=-1, stdout=-1)
+            response = check_call(["ping", host, "-c1", "-w2", "-Mdo", "-s" + str(guessed_mtu)], stderr=-1, stdout=-1)
     except Exception as e:
         if do_print:
             print("\033[31mFailure\033[0m")

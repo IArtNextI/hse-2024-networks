@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+  myservice1:
+    image: mtud-discovery:latest
+    networks:
+      - mtud_network
+    command: ["/bin/sh", "-c", "while true; do sleep 30; done;"]
+
+  myservice2:
+    image: mtud-discovery:latest
+    networks:
+      - mtud_network
+    command: ["/bin/sh", "-c", "while true; do sleep 30; done;"]
+
+networks:
+  mtud_network:
+    driver: bridge
+    driver_opts:
+      com.docker.network.driver.mtu: '12345'
